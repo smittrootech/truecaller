@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Contacts,SpamCounter
+from .models import Contacts,SpamCounter,UserbasedSpamList
 
 # Register your models here.
 
@@ -12,3 +12,7 @@ class ContactAdmin(admin.ModelAdmin):
 @admin.register(SpamCounter)
 class SpamAdmin(admin.ModelAdmin):
     list_display=('contact_num','spam')
+
+@admin.register(UserbasedSpamList)
+class SpamAdmin(admin.ModelAdmin):
+    list_display=('contact_number','mobile_number')

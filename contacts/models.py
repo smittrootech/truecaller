@@ -27,6 +27,10 @@ class Contacts(models.Model):
     class Meta:
         unique_together=[["mobile_number","contact_numbers"]]
 
+class UserbasedSpamList(models.Model):
+    contact_number=PhoneNumberField()
+    mobile_number= models.ForeignKey(settings.AUTH_USER_MODEL,on_delete=models.CASCADE, related_name='mobnumber')
+
 @receiver(post_save, sender=SpamCounter)
 def update_contacts_spam_flag(sender, instance, **kwargs):
     if instance.spam == 25:
